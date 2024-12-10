@@ -14,4 +14,16 @@ public class Money {
             throw new IllegalArgumentException("금액은 음수가 될 수 없습니다.");
         }
     }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public Money minus(int amount) {
+        return new Money(this.amount - amount);
+    }
+
+    public boolean isLess(int amount) {
+        return this.amount < amount;
+    }
 }

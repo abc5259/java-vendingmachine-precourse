@@ -1,6 +1,9 @@
 package vendingmachine.controller;
 
+import vendingmachine.domain.CoinMachine;
+import vendingmachine.domain.Coins;
 import vendingmachine.domain.Money;
+import vendingmachine.domain.strategy.RandomPickNumberInListStrategy;
 import vendingmachine.view.OutputView;
 
 public class VendingmachineController {
@@ -15,6 +18,7 @@ public class VendingmachineController {
 
     public void process() {
         Money money = iteratorInputHandler.inputMoney();
-        
+        Coins coins = new CoinMachine().generatorCoins(money, new RandomPickNumberInListStrategy());
+        System.out.println(coins);
     }
 }
