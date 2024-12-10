@@ -19,6 +19,6 @@ public class VendingmachineController {
     public void process() {
         Money money = iteratorInputHandler.inputMoney();
         Coins coins = new CoinMachine().generatorCoins(money, new RandomPickNumberInListStrategy());
-        System.out.println(coins);
+        outputView.printCoins(coins);
     }
 }
