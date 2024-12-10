@@ -17,6 +17,13 @@ public class OutputView {
 
     public void printCoins(Coins coins) {
         System.out.println();
+        System.out.println("자판기가 보유한 동전");
+        Map<Coin, Integer> coinMap = coins.getCoins();
+        coinMap.forEach((coin, count) -> System.out.printf(COIN_FORMAT, coin.getAmount(), count));
+    }
+
+    public void printSmallCoins(Coins coins) {
+        System.out.println("잔돈");
         Map<Coin, Integer> coinMap = coins.getCoins();
         coinMap.forEach((coin, count) -> System.out.printf(COIN_FORMAT, coin.getAmount(), count));
     }

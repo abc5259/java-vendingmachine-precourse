@@ -37,5 +37,7 @@ public class VendingmachineController {
             putMoney = putMoney.minus(vendingmachine.purchase(item, putMoney));
         } while (true);
 
+        Coins smallCoins = vendingmachine.changeCoins(putMoney);
+        outputView.printSmallCoins(smallCoins);
     }
 }

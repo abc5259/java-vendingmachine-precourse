@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public enum Coin {
+public enum Coin implements Comparable<Coin> {
     COIN_500(500),
     COIN_100(100),
     COIN_50(50),
@@ -34,8 +34,7 @@ public enum Coin {
         return amount;
     }
 
-    private boolean isLessOrEqual(int amount) {
+    public boolean isLessOrEqual(int amount) {
         return this.amount <= amount;
     }
-
 }
