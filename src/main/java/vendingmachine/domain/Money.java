@@ -34,4 +34,8 @@ public class Money {
     public boolean isLessOrEqual(Money money) {
         return this.amount <= money.amount;
     }
+
+    public int rest(int value) {
+        return this.amount % value;
+    }
 }

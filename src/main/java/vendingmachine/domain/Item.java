@@ -8,9 +8,16 @@ public class Item {
     public Item(String name, Money money, int count) {
         validateName(name);
         validateCount(count);
+        validateMoney(money);
         this.name = name;
         this.money = money;
         this.count = count;
+    }
+
+    private void validateMoney(Money money) {
+        if (money.isLess(100) || money.rest(10) != 0) {
+            throw new IllegalArgumentException("상품은 최소 100원이상이어야 하며 10원단위 여야 합니다.");
+        }
     }
 
     private void validateName(String name) {
