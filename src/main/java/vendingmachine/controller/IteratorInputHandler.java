@@ -6,6 +6,7 @@ import vendingmachine.converter.StringToItemsConvertor;
 import vendingmachine.converter.StringToMoneyConvertor;
 import vendingmachine.domain.Item;
 import vendingmachine.domain.Money;
+import vendingmachine.domain.Vendingmachine;
 import vendingmachine.view.InputView;
 
 public class IteratorInputHandler {
@@ -29,6 +30,25 @@ public class IteratorInputHandler {
         return iteratorInputTemplate.execute(
                 inputView::inputItems,
                 new StringToItemsConvertor()
+        );
+    }
+
+    public Money inputPutMoney() {
+        return iteratorInputTemplate.execute(
+                inputView::inputPutAmount,
+                new StringToMoneyConvertor()
+        );
+    }
+
+    public Item inputPurchaseItemName(Vendingmachine vendingmachine) {
+        return iteratorInputTemplate.execute(
+                inputView::inputPurchaseItemName,
+                name -> {
+                    if (name == null || name.isEmpty()) {
+                        throw new IllegalArgumentException("이름을 입력하세요.");
+                    }
+                    return vendingmachine.findItem(name);
+                }
         );
     }
 }

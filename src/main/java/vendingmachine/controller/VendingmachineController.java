@@ -5,6 +5,7 @@ import vendingmachine.domain.CoinMachine;
 import vendingmachine.domain.Coins;
 import vendingmachine.domain.Item;
 import vendingmachine.domain.Money;
+import vendingmachine.domain.Vendingmachine;
 import vendingmachine.domain.strategy.RandomPickNumberInListStrategy;
 import vendingmachine.view.OutputView;
 
@@ -24,5 +25,17 @@ public class VendingmachineController {
         outputView.printCoins(coins);
 
         List<Item> items = iteratorInputHandler.inputItems();
+        Money putMoney = iteratorInputHandler.inputPutMoney();
+        Vendingmachine vendingmachine = new Vendingmachine(coins, items);
+        do {
+            outputView.printPutMoney(putMoney);
+            if (!vendingmachine.isPurchaseItem(putMoney)) {
+                break;
+            }
+
+            Item item = iteratorInputHandler.inputPurchaseItemName(vendingmachine);
+            putMoney = putMoney.minus(vendingmachine.purchase(item, putMoney));
+        } while (true);
+
     }
 }

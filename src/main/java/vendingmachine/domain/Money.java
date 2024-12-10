@@ -23,7 +23,15 @@ public class Money {
         return new Money(this.amount - amount);
     }
 
+    public Money minus(Money money) {
+        return new Money(this.amount - money.amount);
+    }
+
     public boolean isLess(int amount) {
         return this.amount < amount;
+    }
+
+    public boolean isLessOrEqual(Money money) {
+        return this.amount <= money.amount;
     }
 }
