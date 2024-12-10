@@ -1,7 +1,9 @@
 package vendingmachine.controller;
 
+import java.util.List;
 import vendingmachine.domain.CoinMachine;
 import vendingmachine.domain.Coins;
+import vendingmachine.domain.Item;
 import vendingmachine.domain.Money;
 import vendingmachine.domain.strategy.RandomPickNumberInListStrategy;
 import vendingmachine.view.OutputView;
@@ -20,5 +22,7 @@ public class VendingmachineController {
         Money money = iteratorInputHandler.inputMoney();
         Coins coins = new CoinMachine().generatorCoins(money, new RandomPickNumberInListStrategy());
         outputView.printCoins(coins);
+
+        List<Item> items = iteratorInputHandler.inputItems();
     }
 }
